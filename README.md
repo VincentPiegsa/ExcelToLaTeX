@@ -30,9 +30,9 @@ $5.2$ & $1.5$\\
 ```
 
 # Documentation
-Load Excel-file:
+Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. Specify the sheet to be parsed (if left at default, the first sheet will be parsed), and input the column titles.
 ```python
-load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame
+load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame:
 	"""
 	Load the .xlsx-file via pandas into pd.DataFrame format.
 
@@ -46,9 +46,9 @@ load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.
 		pd.DataFrame: dataframe with data
 	"""
 ```
-Parse dataframe to LaTeX-format:
+Parse dataframe to LaTeX-format: 
 ```python
-parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None
+parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
 	"""
 	Parse pandas dataframe to LaTeX table format.
 
