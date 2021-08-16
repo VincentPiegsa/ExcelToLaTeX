@@ -34,11 +34,11 @@ Afterwards, the generated table code can be included into the main document with
 ```
 Note: to use the full capabilites of the table parser, some additional libraries have to be included to the document:
 ```latex
-% Figure Orientation
+% figure orientation
 \usepackage{float}
-% Booktabs for nice tables
+% booktabs for nice tables
 \usepackage{booktabs}
-% color for row coloring
+% color for striped rows
 \usepackage{xcolor, colortbl}
 \definecolor{gray}{rgb}{0.85, 0.85, 0.85}
 ```
