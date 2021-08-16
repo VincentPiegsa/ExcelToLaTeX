@@ -51,7 +51,7 @@ Note: to use the full capabilites of the table parser, some additional libraries
 ```
 
 # Documentation
-Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
+1. Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
 ```python
 load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 	"""
@@ -66,7 +66,7 @@ load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 		pd.DataFrame: dataframe with data
 	"""
 ```
-Parse dataframe to LaTeX-format: input the pandas dataframe, and specify the filename of the output file. If neccesary, also add the absolute path, otherwise the current directory is parsed. 
+2. Parse dataframe to LaTeX-format: input the pandas dataframe, and specify the filename of the output file. If neccesary, also add the absolute path, otherwise the current directory is parsed. 
 ```python
 parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
 	"""
