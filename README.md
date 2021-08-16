@@ -30,7 +30,7 @@ $5.2$ & $1.5$\\
 ```
 
 # Documentation
-Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel() documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
+Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
 ```python
 load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 	"""
