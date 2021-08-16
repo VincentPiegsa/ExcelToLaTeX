@@ -3,11 +3,11 @@ Convert Excel-Sheets to LaTeX tables via a Python interface.
 
 # Usage
 Load .xlsx-file with 
-```lang_python
+```python
 dataframe = load_excel('file.xlsx', column_names=['column1', 'column2'])
 ```
 Afterwards, you can convert the dataframe to LaTeX by using:
-```lang_python
+```python
 parse(dataframe, 'table.txt')
 ```
 The output will be saved into the specified file:
