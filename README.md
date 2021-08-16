@@ -33,6 +33,18 @@ $5.2$ & $1.5$\\
 Load Excel-file:
 ```python
 load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame
+"""
+	Load the .xlsx-file via pandas into pd.DataFrame format.
+
+	args:
+		filename (str): name of .xlsx-file
+		path (str, optional): absolute path to file
+		sheet_name (optional): sheet name to load, use 0 for default or specify sheet name (str)
+		column_names (list, optional): list of column names
+
+	returns:
+		pd.DataFrame: dataframe with data
+	"""
 ```
 Parse dataframe to LaTeX-format:
 ```python
