@@ -8,7 +8,7 @@ dataframe = load_excel('file.xlsx')
 ```
 The first row of the table will be used as column titles. Afterwards, you can convert the dataframe to LaTeX by using:
 ```python
-parse(dataframe, 'table.txt')
+parse(dataframe, 'table.tex')
 ```
 The output will be saved into the specified file, that is located in the same directory where the script is executed:
 ```latex
@@ -27,6 +27,20 @@ $5.2$ & $1.5$\\
 \end{tabular}
 \caption{}
 \end{table}
+```
+Afterwards, the generated table code can be included into the main document with:
+```latex
+\include{table.tex}
+```
+Note: to use the full capabilites of the table parser, some additional libraries have to be included to the document:
+```latex
+% Figure Orientation
+\usepackage{float}
+% Booktabs for nice tables
+\usepackage{booktabs}
+% color for row coloring
+\usepackage{xcolor, colortbl}
+\definecolor{gray}{rgb}{0.85, 0.85, 0.85}
 ```
 
 # Documentation
