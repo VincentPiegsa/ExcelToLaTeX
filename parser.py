@@ -2,7 +2,7 @@ import os
 import pandas as pd 
 
 
-def load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame:
+def load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 
 	"""
 	Load the .xlsx-file via pandas into pd.DataFrame format.
@@ -10,8 +10,7 @@ def load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) ->
 	args:
 		filename (str): name of .xlsx-file
 		path (str, optional): absolute path to file
-		sheet_name (optional): sheet name to load, use 0 for default or specify sheet name (str)
-		column_names (list, optional): list of column names
+		**kwargs: see pandas.read_excel documentation for additional arguments
 
 	returns:
 		pd.DataFrame: dataframe with data
@@ -20,7 +19,7 @@ def load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) ->
 	if not os.path.isfile(os.path.join(path, filename)):
 		raise OSError(f"File '{os.path.join(path, filename)}' not found.")
 
-	dataframe = pd.read_excel(os.path.join(path, filename), sheet_name=sheet_name, names=column_names)
+	dataframe = pd.read_excel(os.path.join(path, filename), **kwargs)
 	
 	return dataframe
 
