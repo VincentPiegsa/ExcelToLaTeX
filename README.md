@@ -10,7 +10,7 @@ The first row of the table will be used as column titles. Afterwards, you can co
 ```python
 parse(dataframe, 'table.tex')
 ```
-The output will be saved into the specified file, that is located in the same directory where the script is executed:
+The output will be saved into the specified file, that is located in the same directory where the script is executed or in the specified path:
 ```latex
 \begin{table}[H]
 \centering
