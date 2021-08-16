@@ -1,7 +1,7 @@
 # ExcelToLaTeX
 Convert Excel-Sheets to LaTeX tables via a Python interface.
 
-# Usage
+# Get Started
 Load .xlsx-file with 
 ```python
 dataframe = load_excel('file.xlsx', column_names=['column1', 'column2'])
@@ -27,4 +27,14 @@ $5.2$ & $1.5$\\
 \end{tabular}
 \caption{}
 \end{table}
+```
+
+# Documentation
+Load Excel-file:
+```python
+load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame
+```
+Parse dataframe to LaTeX-format:
+```python
+parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None
 ```
