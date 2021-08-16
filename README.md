@@ -11,7 +11,7 @@ Afterwards, you can convert the dataframe to LaTeX by using:
 parse(dataframe, 'table.txt')
 ```
 The output will be saved into the specified file:
-```
+```latex
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
