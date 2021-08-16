@@ -4,7 +4,7 @@ Convert Excel-Sheets to LaTeX tables via a Python interface.
 # Get Started
 ## Necessary modules
 Firstly, [Python](https://www.python.org/downloads/) has to be installed if it is not already. Before running the script, [pandas](https://pandas.pydata.org/) has to be installed via [pip](https://pypi.org/project/pip/):
-```terminal
+```bash
 python -m pip install pandas --upgrade
 ```
 
