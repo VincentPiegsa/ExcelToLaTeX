@@ -66,7 +66,13 @@ load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 		pd.DataFrame: dataframe with data
 	"""
 ```
-2. Parse dataframe to LaTeX-format: input the pandas dataframe, and specify the filename of the output file. If neccesary, also add the absolute path, otherwise the current directory is parsed. 
+2. Parse dataframe to LaTeX-format: input the pandas dataframe, and specify the filename of the output file. If neccesary, also add the absolute path, otherwise the current directory is parsed. Further optional arguments:
+* orientation
+* caption
+* striped
+* is_numeric
+* decimal_sep
+* overwrite
 ```python
 parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
 	"""
