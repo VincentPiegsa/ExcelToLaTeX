@@ -30,7 +30,7 @@ $5.2$ & $1.5$\\
 ```
 Afterwards, the generated table code can be included into the main document with:
 ```latex
-\include{table.tex}
+\input{table.tex}
 ```
 Note: to use the full capabilites of the table parser, some additional libraries have to be included to the document:
 ```latex
