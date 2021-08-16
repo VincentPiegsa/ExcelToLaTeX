@@ -4,13 +4,13 @@ Convert Excel-Sheets to LaTeX tables via a Python interface.
 # Get Started
 Load .xlsx-file with 
 ```python
-dataframe = load_excel('file.xlsx', column_names=['column1', 'column2'])
+dataframe = load_excel('file.xlsx')
 ```
-Afterwards, you can convert the dataframe to LaTeX by using:
+The first row of the table will be used as column titles. Afterwards, you can convert the dataframe to LaTeX by using:
 ```python
 parse(dataframe, 'table.txt')
 ```
-The output will be saved into the specified file:
+The output will be saved into the specified file, that is located in the same directory where the script is executed:
 ```latex
 \begin{table}[H]
 \centering
@@ -30,23 +30,22 @@ $5.2$ & $1.5$\\
 ```
 
 # Documentation
-Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. Specify the sheet to be parsed (if left at default, the first sheet will be parsed), and input the column titles.
+Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel() documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
 ```python
-load_excel(filename: str, path : str = '', sheet_name=0, column_names=[]) -> pd.DataFrame:
+load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
 	"""
 	Load the .xlsx-file via pandas into pd.DataFrame format.
 
 	args:
 		filename (str): name of .xlsx-file
 		path (str, optional): absolute path to file
-		sheet_name (optional): sheet name to load, use 0 for default or specify sheet name (str)
-		column_names (list, optional): list of column names
+		**kwargs: see pandas.read_excel documentation for additional arguments: 
 
 	returns:
 		pd.DataFrame: dataframe with data
 	"""
 ```
-Parse dataframe to LaTeX-format: 
+Parse dataframe to LaTeX-format: input the pandas dataframe, and specify the filename of the output file. If neccesary, also add the absolute path, otherwise the current directory is parsed. 
 ```python
 parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
 	"""
