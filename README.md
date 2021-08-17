@@ -78,7 +78,8 @@ load_excel(filename: str, path : str = os.getcwd(), **kwargs) -> pd.DataFrame:
 * complete_document: if True add a minimalist LaTeX document around the table
 * disable_debug: if True suggested packages won't be shown in the output file
 ```python
-def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False, complete_document: bool = False, disable_debug: bool = False) -> None:
+def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True,\ 
+	is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False, complete_document: bool = False, disable_debug: bool = False) -> None:
 
 	"""
 	Parse pandas dataframe to LaTeX table format.
