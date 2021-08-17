@@ -76,10 +76,10 @@ load_excel(filename: str, path : str = os.getcwd(), **kwargs) -> pd.DataFrame:
 * decimal_sep: decimal separator, "," if not specified.
 * overwrite: overwrite output file if already exists.
 ```python
-parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
+def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False, complete_document: bool = False, disable_debug: bool = False) -> None:
+
 	"""
 	Parse pandas dataframe to LaTeX table format.
-
 	args:
 		dataframe (pd.DataFrame): dataframe with data
 		filename (str): filename of output file
@@ -90,8 +90,7 @@ parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientati
 		is_numeric (bool, optional): True if columns contain numeric values
 		decimal_sep (str, optional): specify decimal separator
 		overwrite (bool, optional): overwrite output file if already exists
-		
-	returns:
-		None
+		complete_document (bool, optional): if True outputs a minimalist LaTeX document
+		disable_debug (bool, optional): if True package-info won't be written into the output file
 	"""
 ```
