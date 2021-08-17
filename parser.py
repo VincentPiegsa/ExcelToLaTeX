@@ -24,7 +24,7 @@ def load_excel(filename: str, path : str = os.getcwd(), **kwargs) -> pd.DataFram
 	return dataframe
 
 
-def generate_header(orientation: list, number_columns: int) -> str:
+def generate_header(orientation: list, number_columns: int, complete_document: bool, disable_debug: bool) -> str:
 
 	"""
 	Generate table header. 
@@ -51,7 +51,14 @@ def generate_header(orientation: list, number_columns: int) -> str:
 		for index, column in enumerate(orientation):
 			column_orientation += ORIENTATION[column.lower()]
 
-	return '''% Include these packages\n% Figure Orientation\n% \\usepackage{float}\n% Booktabs for nice tables\n% \\usepackage{booktabs}\n% color for row coloring\n% \\usepackage{xcolor, colortbl}\n% \\definecolor{gray}{rgb}{0.85, 0.85, 0.85}\n\n\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n'''
+	if not disable_debug and not complete_document:
+		return '''% Include these packages\n% Figure Orientation\n% \\usepackage{float}\n% Booktabs for nice tables\n% \\usepackage{booktabs}\n% color for row coloring\n% \\usepackage{xcolor, colortbl}\n% \\definecolor{gray}{rgb}{0.85, 0.85, 0.85}\n\n\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n'''
+
+	elif complete_document:
+		return '''\\documentclass[a4paper, 12pt]{article}\n\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage[english]{babel}\n\\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=3cm]{geometry}\n\\usepackage{float}\n\\usepackage{booktabs}\n\\usepackage{xcolor, colortbl}\n\\definecolor{gray}{rgb}{0.85, 0.85, 0.85}\n\n\\begin{document}\n\n\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n''' 
+
+	else:
+		return '''\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n'''
 
 
 def generate_body(dataframe: pd.DataFrame, striped: bool = True, is_numeric: bool = True, decimal_sep: str = '.') -> str:
@@ -102,7 +109,7 @@ def generate_body(dataframe: pd.DataFrame, striped: bool = True, is_numeric: boo
 	return body + '\\bottomrule\n'
 
 
-def generate_footer(caption: str = '') -> str:
+def generate_footer(caption: str = '', complete_document: bool = False) -> str:
 
 	"""
 	Generate table footer.
@@ -114,10 +121,14 @@ def generate_footer(caption: str = '') -> str:
 		str: table footer
 	"""
 
-	return '''\\end{tabular}\n\\caption{''' + caption + '''}\n\\end{table}'''
+	if not complete_document:
+		return '''\\end{tabular}\n\\caption{''' + caption + '''}\n\\end{table}'''
+
+	else:
+		return '''\\end{tabular}\n\\caption{''' + caption + '''}\n\\end{table}\n\n\\end{document}'''
 
 
-def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
+def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False, complete_document: bool = False, disable_debug: bool = False) -> None:
 
 	"""
 	Parse pandas dataframe to LaTeX table format.
@@ -132,11 +143,13 @@ def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orien
 		is_numeric (bool, optional): True if columns contain numeric values
 		decimal_sep (str, optional): specify decimal separator
 		overwrite (bool, optional): overwrite output file if already exists
+		complete_document (bool, optional): if True outputs a minimalist LaTeX document
+		disable_debug (bool, optional): if True package-info won't be written into the output file
 	"""
 
-	table = generate_header(orientation, len(dataframe.columns)) + \
+	table = generate_header(orientation, len(dataframe.columns), complete_document=complete_document, disable_debug=disable_debug) + \
 			generate_body(dataframe, striped=striped, is_numeric=is_numeric, decimal_sep=decimal_sep) + \
-			generate_footer(caption=caption)
+			generate_footer(caption=caption, complete_document=complete_document)
 
 	if os.path.isfile(os.path.join(path, filename)) and not overwrite:
 		raise IOError(f'File {os.path.join(path, filename)} already exists. Specify a different filename or set overwrite=True.')
@@ -153,3 +166,4 @@ def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orien
 if __name__ == '__main__':
 	
 	pass
+
