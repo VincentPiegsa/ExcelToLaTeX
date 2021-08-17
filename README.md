@@ -20,19 +20,20 @@ parse(dataframe, 'table.tex')
 The output will be saved into the specified file, that is located in the same directory where the script is executed or in the specified path:
 ```latex
 \begin{table}[H]
-\centering
-\begin{tabular}{ll}
-\toprule
-column1 & column2\\ 
-\midrule
-\rowcolor{gray} $4.0$ & $1.0$\\
-$4.5$ & $1.2$\\
-\rowcolor{gray} $4.8$ & $1.3$\\
-$5.2$ & $1.5$\\
-\rowcolor{gray} $6.0$ & $1.8$\\
-\bottomrule
-\end{tabular}
-\caption{}
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		Voltage & Current  & Resistance\\ 
+		\midrule
+		\rowcolor{gray} $3,1$ & $0,5$ & $6,2$\\
+		$5,9$ & $1,0$ & $5,9$\\
+		\rowcolor{gray} $8,8$ & $1,5$ & $5,87$\\
+		$12,3$ & $2,0$ & $6,15$\\
+		\rowcolor{gray} $15,0$ & $2,5$ & $6,0$\\
+		$17,8$ & $3,0$ & $5,93$\\
+		\bottomrule
+	\end{tabular}
+	\caption{Nicely formatted table}
 \end{table}
 ```
 Finally, the generated table code can be included into the main .tex-document with:
