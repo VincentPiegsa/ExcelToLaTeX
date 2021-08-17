@@ -35,11 +35,11 @@ $5.2$ & $1.5$\\
 \caption{}
 \end{table}
 ```
-Afterwards, the generated table code can be included into the main document with:
+Afterwards, the generated table code can be included into the main .tex-document with:
 ```latex
 \input{table.tex}
 ```
-Note: to use the full capabilites of the table parser, some additional libraries have to be included to the document:
+Note: to use the full capabilites of the table parser, some additional libraries have to be included in the preamble:
 ```latex
 % figure orientation
 \usepackage{float}
