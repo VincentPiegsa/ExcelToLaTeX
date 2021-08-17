@@ -40,6 +40,7 @@ Finally, the generated table code can be included into the main .tex-document wi
 ```latex
 \input{table.tex}
 ```
+![Image](https://github.com/VincentPiegsa/ExcelToLaTeX/blob/main/docs/output.jpg)
 Note: to use the full capabilites of the table parser, some additional libraries have to be included in the preamble:
 ```latex
 % figure orientation
