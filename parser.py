@@ -117,7 +117,7 @@ def generate_footer(caption: str = '') -> str:
 	return '''\\end{tabular}\n\\caption{''' + caption + '''}\n\\end{table}'''
 
 
-def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False): -> None
+def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orientation: list = ['left'], caption: str = 'Table', striped: bool = True, is_numeric: bool = False, decimal_sep: str = ',', overwrite: bool = False) -> None:
 
 	"""
 	Parse pandas dataframe to LaTeX table format.
