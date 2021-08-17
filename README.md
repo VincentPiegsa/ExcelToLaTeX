@@ -15,7 +15,7 @@ dataframe = load_excel('file.xlsx')
 ```
 The first row of the table will be used as column titles. Afterwards, you can convert the dataframe to LaTeX by using:
 ```python
-parse(dataframe, 'table.tex')
+parse(dataframe, 'table.tex', is_numeric=True, caption='Nicely formatted table')
 ```
 The output will be saved into the specified file, that is located in the same directory where the script is executed or in the specified path:
 ```latex
