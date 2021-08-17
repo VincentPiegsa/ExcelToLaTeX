@@ -2,7 +2,7 @@ import os
 import pandas as pd 
 
 
-def load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
+def load_excel(filename: str, path : str = os.getcwd(), **kwargs) -> pd.DataFrame:
 
 	"""
 	Load the .xlsx-file via pandas into pd.DataFrame format.
