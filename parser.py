@@ -51,7 +51,7 @@ def generate_header(orientation: list, number_columns: int) -> str:
 		for index, column in enumerate(orientation):
 			column_orientation += ORIENTATION[column.lower()]
 
-	return '''% Include these packages\n% Figure Orientation\n% \\usepackage{float}\n% Booktabs for nice tables\n% \\usepackage{booktabs}\n% color for row coloring% \n\\usepackage{xcolor, colortbl}\n% \\definecolor{gray}{rgb}{0.85, 0.85, 0.85}\n\n\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n'''
+	return '''% Include these packages\n% Figure Orientation\n% \\usepackage{float}\n% Booktabs for nice tables\n% \\usepackage{booktabs}\n% color for row coloring\n% \\usepackage{xcolor, colortbl}\n% \\definecolor{gray}{rgb}{0.85, 0.85, 0.85}\n\n\\begin{table}[H]\n\\centering\n\\begin{tabular}{''' + column_orientation + '''}\n'''
 
 
 def generate_body(dataframe: pd.DataFrame, striped: bool = True, is_numeric: bool = True, decimal_sep: str = '.') -> str:
@@ -134,13 +134,20 @@ def parse(dataframe: pd.DataFrame, filename: str, path: str = os.getcwd(), orien
 		overwrite (bool, optional): overwrite output file if already exists
 	"""
 
-	table = generate_header(orientation, len(dataframe.columns)) + generate_body(dataframe) + generate_footer()
+	table = generate_header(orientation, len(dataframe.columns)) + \
+			generate_body(dataframe, striped=striped, is_numeric=is_numeric, decimal_sep=decimal_sep) + \
+			generate_footer(caption=caption)
 
 	if os.path.isfile(os.path.join(path, filename)) and not overwrite:
 		raise IOError(f'File {os.path.join(path, filename)} already exists. Specify a different filename or set overwrite=True.')
 
-	with open(os.path.join(path, filename), 'w') as file:
-		file.write(table)
+	try:
+
+		with open(os.path.join(path, filename), 'w') as file:
+			file.write(table)
+
+	except Exception as exception:
+		raise exception
 
 
 if __name__ == '__main__':
