@@ -53,13 +53,13 @@ Note: to use the full capabilites of the table parser, some additional libraries
 # Documentation
 1. Load Excel-file: input the .xlsx-file. If the file is located in a different directory, also specify the absolute path. For additional arguments, look up the [pandas.read_excel documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html).
 ```python
-load_excel(filename: str, path : str = '', **kwargs) -> pd.DataFrame:
+load_excel(filename: str, path : str = os.getcwd(), **kwargs) -> pd.DataFrame:
 	"""
 	Load the .xlsx-file via pandas into pd.DataFrame format.
 
 	args:
 		filename (str): name of .xlsx-file
-		path (str, optional): absolute path to file
+		path (str, optional): absolute path to file, current directory by default
 		**kwargs: see pandas.read_excel documentation for additional arguments: 
 
 	returns:
