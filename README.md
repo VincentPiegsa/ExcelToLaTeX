@@ -9,7 +9,7 @@ python -m pip install pandas --upgrade
 ```
 
 ## Generate a table
-Load .xlsx-file with 
+Load the Excel-file containing the data with:
 ```python
 dataframe = load_excel('file.xlsx')
 ```
