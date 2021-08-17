@@ -1,0 +1,35 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+% Include these packages
+% Figure Orientation
+\usepackage{float}
+% Booktabs for nice tables
+\usepackage{booktabs}
+% color for row coloring
+\usepackage{xcolor, colortbl}
+\definecolor{gray}{rgb}{0.85, 0.85, 0.85}
+
+\begin{document}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		Voltage & Current  & Resistance\\ 
+		\midrule
+		\rowcolor{gray} $3,1$ & $0,5$ & $6,2$\\
+		$5,9$ & $1,0$ & $5,9$\\
+		\rowcolor{gray} $8,8$ & $1,5$ & $5,87$\\
+		$12,3$ & $2,0$ & $6,15$\\
+		\rowcolor{gray} $15,0$ & $2,5$ & $6,0$\\
+		$17,8$ & $3,0$ & $5,93$\\
+		\bottomrule
+	\end{tabular}
+	\caption{Nicely formatted table}
+\end{table}
+
+\end{document}
