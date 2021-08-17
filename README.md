@@ -35,7 +35,7 @@ $5.2$ & $1.5$\\
 \caption{}
 \end{table}
 ```
-Afterwards, the generated table code can be included into the main .tex-document with:
+Finally, the generated table code can be included into the main .tex-document with:
 ```latex
 \input{table.tex}
 ```
